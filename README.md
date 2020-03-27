@@ -19,3 +19,14 @@ Feature Selection techniques include "Backward Elimination", "Forward Selection"
 - Kernel Principal Component Analysis (Kernel PCA)
 - Linear Discriminant Analysis (LDA)
 
+### Principal Component Analysis - PCA
+
+PCA is one of the most used unsupervised algorithms, and the most popular Dimensionality Reduction Algorithm. PCA is used for operations such as:
+- Noise filtering
+- Visualisation
+- Feature extraction
+- Stock market predictions
+- Gene data analysis
+
+The goal of PCA is to identify patterns in data and detect the correlation between variables. 
+
