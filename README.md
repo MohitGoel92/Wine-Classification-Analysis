@@ -28,5 +28,40 @@ PCA is one of the most used unsupervised algorithms, and the most popular Dimens
 - Stock market predictions
 - Gene data analysis
 
-The goal of PCA is to identify patterns in data and detect the correlation between variables. 
+The goal of PCA is to identify patterns in data and detect the correlation between variables. If we find a strong correlation, we can reduce the dimensionality. In essence, we reduce the dimensions of a d-dimensional dataset by projecting it onto a k-dimensional subspace, where k<d.
+
+**PCA Breakdown**
+
+- Standardise the data.
+- Obtain the Eigenvectors and Eigenvalues from the covariance matrix or correlation matrix, or perform Singular Vector Decomposition.
+- Sort Eigenvalues in descending order and choose the k Eigenvectors that correspond to the k largest Eigenvalues where k is the number of dimensions of the new feature subspace (k less than or equal to d).
+- Construct the projection matrix W from the selected k Eigenvectors.
+- Transform the original dataset X via W to obtain a k-dimensional feature subspace Y.
+
+**Summary**
+
+From the m independent variables of our dataset, PCA extracts (p less than or equal to m) new independent variables that explains the most of the variance of the dataset, regardless of the dependent variable. As the dependent variable is not considered, this makes PCA an unsupervised model.
+
+The below code will be used when appling the PCA.
+
+```
+from sklearn.decomposition import PCA
+pca = PCA(n_components = None)
+X_train = pca.fit_transform(X_train)
+X_test = pca.transform(X_test)
+explained_variance = pca.explained_variance_ratio_
+```
+
+Let's observe the outcome of the explained variance.
+
+```
+In [1]: explained_variance
+Out[2]: 
+array([0.37281068, 0.18739996, 0.10801208, 0.07619859, 0.06261922,
+       0.04896412, 0.0417445 , 0.02515945, 0.02340805, 0.0184892 ,
+       0.01562956, 0.01269224, 0.00687236])
+```
+
+From the output above, we state that 0.56 of the variance (0.37 + 0.19) is contributed by two variables, indicating that we may reduce the dimensionality of the dataset. For the dataset under study, the python files attached take 2 variables as we can visually plot the predictive regions.
+
 
