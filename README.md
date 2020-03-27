@@ -15,7 +15,7 @@ There are two types of Dimensionality Reduction techniques, they are:
 
 Feature Selection techniques include "Backward Elimination", "Forward Selection", "Bidirectional Elimination", "Score Comparison" ... etc. For the dataset under study, we will be using Feature Extraction techniques listed below:
 
-- 1) Principal Component Analysis (PCA)
-- 2) Kernel Principal Component Analysis (Kernel PCA)
-- 3) Linear Discriminant Analysis (LDA)
+- Principal Component Analysis (PCA)
+- Kernel Principal Component Analysis (Kernel PCA)
+- Linear Discriminant Analysis (LDA)
 
