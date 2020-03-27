@@ -65,3 +65,29 @@ array([0.37281068, 0.18739996, 0.10801208, 0.07619859, 0.06261922,
 From the output above, we state that 0.56 of the variance (0.37 + 0.19) is contributed by two variables, indicating that we may reduce the dimensionality of the dataset. For the dataset under study, the python files attached take 2 variables as we can visually plot the predictive regions.
 
 
+### Kernel Principal Component Analysis - Kernel PCA
+
+This is used when the data is non-linearly seperable. We map the data to a higher dimension using the Gaussian RBF kernel. We then extract new principle components from there and see how it manages to deal with non-linear problems.
+
+The code below will be used when applying the Kernel PCA.
+
+```
+from sklearn.decomposition import KernelPCA
+pca = KernelPCA(n_components = 2, kernel = 'rbf')
+X_train = pca.fit_transform(X_train)
+X_test = pca.transform(X_test)
+```
+
+**Note**
+
+Unlike the PCA algorithm discussed previously, the below code cannot be used in this case.
+
+```
+explained_variance = pca.explained_variance_ratio_
+```
+We will therefore set n_components = 2 and move on from there.
+
+### Linear Discriminant Analysis - LDA
+
+
+
