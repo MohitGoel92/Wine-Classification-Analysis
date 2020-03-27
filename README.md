@@ -89,5 +89,41 @@ We will therefore set n_components = 2 and move on from there.
 
 ### Linear Discriminant Analysis - LDA
 
+LDA is a dimensionality reduction technique that is used in the preprocessing step for pattern classification. The goal is to project the dataset under study onto a lower dimensional space. LDA differs from PCA because, in addition to finding the component axises, with LDA we are interested in the axes that maximise the seperation between multiple classes. Therefore, from the n independent variables of the dataset under study, LDA extracts (p less than or equal to n) new independent variables that seperate the most of the classes of the independent variable.
+
+The goal of LDA is to project a feature space (a dataset of n-dimensional samples) onto a smaller subspace k where (k<n), while maintaining the class-discriminatory information.
+
+Both PCA and LDA are linear transformation techniques used for dimensional reduction. PCA is described as unsupervised but LDA is supervised because of the relation to the dependent variable.
+
+**LDA Breakdown**
+
+- Compute the d-dimensional mean vectors for the different classes from the dataset.
+- Compute the scatter matrices (in-between-class and within-class scatter matrix).
+- Compute the Eigenvectors (e1, e2, ..., eN) and corresponding Eigenvalues (L1, L2, ..., LN), and for the scatter matrices.
+- Sort the Eigenvectors by decreasing Eigenvalues and choose k Eigenvectors with the largest Eigenvalues to form a (d * k) dimensional matrix W, where every column represents an Eigenvector.
+- Use this (d * k) Eigenvector matrix to transform the samples onto a new subspace. This can be summarised by the matrix multiplication:
+       - Y = X * W, where X is a (n * d-dimensional) matrix representing the n samples, and Y are the are the transformed n * k-dimensional samples in the new subspace.
+       
+The code below will be used when applying the LDA.
+
+```
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+lda = LDA(n_components = 2)
+X_train = lda.fit_transform(X_train, y_train)
+X_test = lda.transform(X_test)
+```
+
+Unlike the PCA, we observe that we have fitted X_train and y_train due LDA being a supervised algorithm. In addition, as we are taking 2 linear discriminants we do not require the explained_variance matrix.
+
+### Model Performance Evaluation and Parameter Tuning
+
+After building our machine learning models, some questions remain unanswered:
+
+1) How do we deal with the bias variance tradeoff when building a model and evaluating its performance? The diagram below is used to illustrate this.
+
+<img src = 'Screen1.png' width='700'>
 
 
+**References**
+
+Bias-Variance tradeoff image: https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9
