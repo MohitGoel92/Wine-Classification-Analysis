@@ -142,15 +142,15 @@ accuracies_std = accuracies.std()
 The above code has the outputs below.
 
 ```
-accuracies
+In [2]: accuracies
 Out[2]: 
 array([0.92857143, 0.92857143, 0.92857143, 1.        , 0.92307692,
        1.        , 0.92307692, 1.        , 1.        , 1.        ])
 
-accuracies_avg
+In [3]: accuracies_avg
 Out[3]: 0.9631868131868131
 
-accuracies_std
+In [2]: accuracies_std
 Out[4]: 0.03686235850048242
 ```
 
