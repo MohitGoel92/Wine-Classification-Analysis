@@ -128,7 +128,7 @@ After building our machine learning models, some questions remain unanswered:
 
 ### K-Fold Cross Validation
 
-We perform K-Fold Cross Validation when evaluating the model performance. We compute the accuracies for our model using a number of different combinations for the dataset (usually 10). This should give us a good understanding of the range of values the model accuracy is likely to take.
+We perform K-Fold Cross Validation when evaluating the model performance. We compute the accuracies for our model using a number of different combinations for the dataset (usually cv =10). This should give us a good understanding of the range of values the model accuracy is likely to take.
 
 The code below is used for applying the K-Fold Cross Validation.
 
