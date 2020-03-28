@@ -100,9 +100,7 @@ Both PCA and LDA are linear transformation techniques used for dimensional reduc
 - Compute the scatter matrices (in-between-class and within-class scatter matrix).
 - Compute the Eigenvectors (e1, e2, ..., eN) and corresponding Eigenvalues (L1, L2, ..., LN), and for the scatter matrices.
 - Sort the Eigenvectors by decreasing Eigenvalues and choose k Eigenvectors with the largest Eigenvalues to form a (d * k) dimensional matrix W, where every column represents an Eigenvector.
-- Use this (d * k) Eigenvector matrix to transform the samples onto a new subspace. This can be summarised by the matrix multiplication:
-
-       - Y = X * W, where X is a (n * d-dimensional) matrix representing the n samples, and Y are the are the transformed n * k-dimensional samples in the new subspace.
+- Use this (d * k) Eigenvector matrix to transform the samples onto a new subspace. This can be summarised by the matrix multiplication: Y = X * W, where X is a (n * d-dimensional) matrix representing the n samples, and Y are the are the transformed n * k-dimensional samples in the new subspace.
        
 The code below will be used when applying the LDA.
 
