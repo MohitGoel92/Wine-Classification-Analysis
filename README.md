@@ -158,10 +158,23 @@ From the above output, we observe that the accuracies are either 0.92 (2 dp) or 
 
 ### Grid Search
 
-We use Grid Search to find the optimal values of the hyperparameters. We have two types of parameters; the first type of parameters are learn't through the machine learning algorithm, and the second type of parameters are the parameters that we choose. Examples of this include the kernel, the penalty parameter and the regularization parameter.
+We use Grid Search to find the optimal values of the hyperparameters. We have two types of parameters; the first type of parameters are learn't through the machine learning algorithm, and the second type of parameters are the parameters that we choose. Examples of this include the kernel, the penalty parameter and the regularization parameter. In addition, the Grid Search will also tell us what model to use for the best accuracy.
 
+The code below is used for applying the Grid Search in our task.
 
+```
+from sklearn.model_selection import GridSearchCV
 
+parameters = [{'C':[1,10,100,1000], 'kernel':['linear']},
+              {'C':[1,10,100,1000], 'kernel':['rbf'], 'gamma':[0.5, 0.1, 0.01, 0.001]},
+              {'C':[1,10,100,1000], 'kernel':['poly'], 'degree':[2,3,4,5], 'gamma':[0.5, 0.1, 0.01, 0.001]}]
+grid_search = GridSearchCV(estimator = svc, param_grid = parameters, scoring = 'accuracy', cv=10, n_jobs = -1)
+grid_search = grid_search.fit(X_train, y_train)
+best_accuracy = grid_search.best_score_
+best_parameters = grid_search.best_params_
+```
+
+In the above code, C is the penalty parameter of the error term for regularisation to prevent overfitting. The Kernel is either a linear or non-linear model; as a rule of thumb for linearly seperable data the linear Kernel works great and for non-linearly seperable data the rbf Kernel is most appropriate. The gamma parameter is for non-linear Kernels (rbf, sigmoid, poly) and is used to find the optimal Kernel.
 
 
 **References**
