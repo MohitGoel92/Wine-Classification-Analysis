@@ -121,7 +121,42 @@ After building our machine learning models, some questions remain unanswered:
 
 1) How do we deal with the bias variance tradeoff when building a model and evaluating its performance? The diagram below is used to illustrate this.
 
-<img src = 'Screen1.png' width='700'>
+<img src = 'Screen1.png' width='600'>
+
+2) How to choose the optimal values for the hyperparameters (the parameters that are not learned)?
+3) How to find the most appropriate machine learning model for the task?
+
+### K-Fold Cross Validation
+
+We perform K-Fold Cross Validation when evaluating the model performance. We compute the accuracies for our model using a number of different combinations for the dataset (usually 10). This should give us a good understanding of the range of values the model accuracy is likely to take.
+
+The code below is used for applying the K-Fold Cross Validation.
+
+```
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(svc, X_train, y_train, cv = 10)
+accuracies_avg = accuracies.mean()
+accuracies_std = accuracies.std()
+```
+
+The above code has the outputs below.
+
+```
+accuracies
+Out[2]: 
+array([0.92857143, 0.92857143, 0.92857143, 1.        , 0.92307692,
+       1.        , 0.92307692, 1.        , 1.        , 1.        ])
+
+accuracies_avg
+Out[3]: 0.9631868131868131
+
+accuracies_std
+Out[4]: 0.03686235850048242
+```
+
+From the above output, we observe that the accuracies are either 0.92 or 1, resulting in an average of 0.96. This indicates that we are expecting our model to have an accuracy of around 0.96 and nothing too different due to a small standard deviation.
+
+
 
 
 **References**
