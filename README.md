@@ -154,7 +154,12 @@ In [2]: accuracies_std
 Out[4]: 0.03686235850048242
 ```
 
-From the above output, we observe that the accuracies are either 0.92 or 1, resulting in an average of 0.96. This indicates that we are expecting our model to have an accuracy of around 0.96 and nothing too different due to a small standard deviation.
+From the above output, we observe that the accuracies are either 0.92 (2 dp) or 1, resulting in an average of 0.96. This indicates that we are expecting our model to have an accuracy of around 0.96 and nothing too different due to a small standard deviation.
+
+### Grid Search
+
+We use Grid Search to find the optimal values of the hyperparameters. We have two types of parameters; the first type of parameters are learn't through the machine learning algorithm, and the second type of parameters are the parameters that we choose. Examples of this include the kernel, the penalty parameter and the regularization parameter.
+
 
 
 
