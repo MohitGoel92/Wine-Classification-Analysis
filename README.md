@@ -13,7 +13,7 @@ There are two types of Dimensionality Reduction techniques, they are:
 - Feature Selection
 - Feature Extraction
 
-Feature Selection techniques include "Backward Elimination", "Forward Selection", "Bidirectional Elimination", "Score Comparison" ... etc. For the dataset under study, we will be using Feature Extraction techniques listed below:
+Feature Selection techniques include "Backward Elimination", "Forward Selection", "Bidirectional Elimination", "Score Comparison" ... etc. For the dataset under study, we will be using the Feature Extraction techniques listed below:
 
 - Principal Component Analysis (PCA)
 - Kernel Principal Component Analysis (Kernel PCA)
@@ -28,21 +28,21 @@ PCA is one of the most used unsupervised algorithms, and the most popular Dimens
 - Stock market predictions
 - Gene data analysis
 
-The goal of PCA is to identify patterns in data and detect the correlation between variables. If we find a strong correlation, we can reduce the dimensionality. In essence, we reduce the dimensions of a d-dimensional dataset by projecting it onto a k-dimensional subspace, where k<d.
+The goal of PCA is to identify patterns in the data and detect the correlation between variables. If we find a strong correlation, we can reduce the dimensionality. In essence, we reduce the dimensions of a d-dimensional dataset by projecting it onto a k-dimensional subspace, where (k is less than or equal to d).
 
 **PCA Breakdown**
 
 - Standardise the data.
 - Obtain the Eigenvectors and Eigenvalues from the covariance matrix or correlation matrix, or perform Singular Vector Decomposition.
-- Sort Eigenvalues in descending order and choose the k Eigenvectors that correspond to the k largest Eigenvalues where k is the number of dimensions of the new feature subspace (k less than or equal to d).
+- Sort the Eigenvalues in descending order and choose the k Eigenvectors that correspond to the k largest Eigenvalues, where k is the number of dimensions of the new feature subspace (k less than or equal to d).
 - Construct the projection matrix W from the selected k Eigenvectors.
 - Transform the original dataset X via W to obtain a k-dimensional feature subspace Y.
 
 **Summary**
 
-From the m independent variables of our dataset, PCA extracts (p less than or equal to m) new independent variables that explains the most of the variance of the dataset, regardless of the dependent variable. As the dependent variable is not considered, this makes PCA an unsupervised model.
+From the m independent variables of our dataset, PCA extracts (p less than or equal to m) new independent variables that explains most of the variance of the dataset, regardless of the dependent variable. As the dependent variable is not considered, this makes PCA an unsupervised model.
 
-The below code will be used when appling the PCA.
+The below code is used when appling the PCA.
 
 ```
 from sklearn.decomposition import PCA
@@ -62,14 +62,13 @@ array([0.37281068, 0.18739996, 0.10801208, 0.07619859, 0.06261922,
        0.01562956, 0.01269224, 0.00687236])
 ```
 
-From the output above, we state that 0.56 of the variance (0.37 + 0.19) is contributed by two variables, indicating that we may reduce the dimensionality of the dataset. For the dataset under study, the python files attached take 2 variables as we can visually plot the predictive regions.
-
+From the output above, we state that 0.56 of the variance (0.37 + 0.19) is contributed by two variables, indicating that we may reduce the dimensionality of the dataset. For the dataset under study, the python files attached take 2 variables which allow us to visually plot the predictive regions.
 
 ### Kernel Principal Component Analysis - Kernel PCA
 
 This is used when the data is non-linearly seperable. We map the data to a higher dimension using the Gaussian RBF kernel. We then extract new principle components from there and see how it manages to deal with non-linear problems.
 
-The code below will be used when applying the Kernel PCA.
+The code below is used when applying the Kernel PCA.
 
 ```
 from sklearn.decomposition import KernelPCA
@@ -91,7 +90,7 @@ We will therefore set n_components = 2 and move on from there.
 
 LDA is a dimensionality reduction technique that is used in the preprocessing step for pattern classification. The goal is to project the dataset under study onto a lower dimensional space. LDA differs from PCA because, in addition to finding the component axises, with LDA we are interested in the axes that maximise the seperation between multiple classes. Therefore, from the n independent variables of the dataset under study, LDA extracts (p less than or equal to n) new independent variables that seperate the most of the classes of the independent variable.
 
-The goal of LDA is to project a feature space (a dataset of n-dimensional samples) onto a smaller subspace k where (k<n), while maintaining the class-discriminatory information.
+The goal of LDA is to project a feature space (a dataset of n-dimensional samples) onto a smaller subspace k where (k is less than or equal to n), while maintaining the class-discriminatory information.
 
 Both PCA and LDA are linear transformation techniques used for dimensional reduction. PCA is described as unsupervised but LDA is supervised because of the relation to the dependent variable.
 
@@ -102,6 +101,7 @@ Both PCA and LDA are linear transformation techniques used for dimensional reduc
 - Compute the Eigenvectors (e1, e2, ..., eN) and corresponding Eigenvalues (L1, L2, ..., LN), and for the scatter matrices.
 - Sort the Eigenvectors by decreasing Eigenvalues and choose k Eigenvectors with the largest Eigenvalues to form a (d * k) dimensional matrix W, where every column represents an Eigenvector.
 - Use this (d * k) Eigenvector matrix to transform the samples onto a new subspace. This can be summarised by the matrix multiplication:
+
        - Y = X * W, where X is a (n * d-dimensional) matrix representing the n samples, and Y are the are the transformed n * k-dimensional samples in the new subspace.
        
 The code below will be used when applying the LDA.
